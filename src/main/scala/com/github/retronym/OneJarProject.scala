@@ -38,9 +38,7 @@ trait OneJarProject extends DefaultProject{
       if (s == null) error("could not load: " + oneJarResourceName)
       s
     }
-
     val notManifest: xsbt.NameFilter = -(new xsbt.ExactFilter("META-INF/MANIFEST.MF"))
-
     unzip(oneJarResourceStream, tempDir.asFile, notManifest)
 
     // Copy the JAR for this module to "main"
