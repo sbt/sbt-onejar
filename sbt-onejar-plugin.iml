@@ -1,0 +1,54 @@
+<module type="JAVA_MODULE" version="4">
+      <component name="FacetManager">
+        <facet type="scala" name="Scala">
+          <configuration>
+            <option value="Project" name="compilerLibraryLevel"></option>
+            <option value="buildScala" name="compilerLibraryName"></option>
+          </configuration>
+        </facet>
+        
+      </component>
+      <component inherit-compiler-output="false" name="NewModuleRootManager">
+        <output url="file://$MODULE_DIR$/target/scala_2.7.7/classes"></output><output-test url="file://$MODULE_DIR$/target/scala_2.7.7/test-classes"></output-test>
+        <exclude-output></exclude-output>
+        <content url="file://$MODULE_DIR$">
+          <sourceFolder isTestSource="false" url="file://$MODULE_DIR$/src/main/java"></sourceFolder><sourceFolder isTestSource="false" url="file://$MODULE_DIR$/src/main/scala"></sourceFolder><sourceFolder isTestSource="true" url="file://$MODULE_DIR$/src/test/scala"></sourceFolder>
+          <sourceFolder isTestSource="false" url="file://$MODULE_DIR$/src/main/resources"></sourceFolder><sourceFolder isTestSource="true" url="file://$MODULE_DIR$/src/test/resources"></sourceFolder>
+          
+          
+          <excludeFolder url="file://$MODULE_DIR$/target"></excludeFolder>
+        </content>
+        <orderEntry type="module-library" exported=" " scope="TEST">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/target/scala_2.7.7/test-resources"></root>
+        </CLASSES>
+        <JAVADOC>
+          
+          
+        </JAVADOC>
+        <SOURCES>
+          
+        </SOURCES>
+      </library>
+    </orderEntry><orderEntry exported=" " type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/target/scala_2.7.7/resources"></root>
+        </CLASSES>
+        <JAVADOC>
+          
+          
+        </JAVADOC>
+        <SOURCES>
+          
+        </SOURCES>
+      </library>
+    </orderEntry>
+        <orderEntry type="inheritedJdk"></orderEntry>
+        <orderEntry type="sourceFolder" forTests="false"></orderEntry>
+        <orderEntry level="project" type="library" name="buildScala"></orderEntry>
+        
+        
+      </component>
+    </module>
