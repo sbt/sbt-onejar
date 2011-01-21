@@ -34,7 +34,7 @@ trait OneJarProject extends DefaultProject{
 
     // Unpack One-Jar itself, which is a classpath resource of this Plugin
     val oneJarResourceStream = {
-      val s = getClass.getClassLoader.getResourceAsStream(oneJarResourceName)
+      val s = this.getClass.getClassLoader.getResourceAsStream(oneJarResourceName)
       if (s == null) error("could not load: " + oneJarResourceName)
       s
     }
