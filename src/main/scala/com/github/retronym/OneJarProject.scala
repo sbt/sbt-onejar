@@ -2,9 +2,7 @@ package com.github.retronym
 
 import sbt._
 import java.util.jar.Attributes.Name._
-import java.io.InputStream
 import java.lang.String
-import java.net.{URLClassLoader, URL}
 
 trait OneJarProject extends DefaultProject{
 
