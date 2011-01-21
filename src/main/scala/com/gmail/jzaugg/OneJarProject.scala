@@ -1,4 +1,4 @@
-package com.gmail.jzaugg
+package com.github.retronym
 
 import sbt._
 import java.util.jar.Attributes.Name._
