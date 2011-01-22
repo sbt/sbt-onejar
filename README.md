@@ -1,7 +1,7 @@
 onejar-sbt
 ============
 
-* Packages your project using [One-JAR™](one-jar.sourceforge.net)*
+* Packages your project using [One-JAR™]("http://one-jar.sourceforge.net")*
 
 onejar-sbt is a [simple-build-tool](http://code.google.com/p/simple-build-tool/)
 plugin for building a single executable JAR containing all your code and dependencies
