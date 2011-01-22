@@ -29,6 +29,7 @@ trait OneJarProject extends DefaultProject{
 
   def onejarPaths(tempDir: Path, classpath: PathFinder, extraJars: PathFinder) = {
     import xsbt.FileUtilities._
+    FileUtilities.clean(tempDir, log)
 
     val (libs, directories) = classpath.get.toList.partition(ClasspathUtilities.isArchive)
 
@@ -45,10 +46,13 @@ trait OneJarProject extends DefaultProject{
     FileUtilities.copy(List(jarPath), tempDir / "main", log)
 
     // Copy all dependencies to "lib"
-    FileUtilities.copy(libs ++ extraJars.get, tempDir / "lib", log)
+    val otherProjectJars = topologicalSort.flatMap {
+      case x: BasicPackagePaths => List(x.jarPath)
+      case _ => Nil
+    }
+    FileUtilities.copy(libs ++ extraJars.get ++ otherProjectJars, tempDir / "lib", log)
 
     // Return the paths that will be added to the -onejar.jar
-    val base = (Path.lazyPathFinder(tempDir :: Nil /*:: directories*/) ##)
-    descendents(base, "*").get
+    descendents(tempDir ##, "*").get
   }
 }
