@@ -47,11 +47,15 @@ possibility to obfuscate and shrink. This is popular for targeting Android. Prog
 takes some effort to configure it correctly.
 
 SBT itself can create WAR files from WebProjects. With a little work, you could probably get a self-executing WAR file
-using embedded Jetty or Winstone. Would make a good SBT plugin project for someone!
+using embedded Jetty or Winstone. This would make a good SBT plugin project for someone!
 
-One-JAR employs some classloader magic to achieve sidestep the über-JAR limitations. It does support
+One-JAR employs some classloader magic to sidestep the über-JAR limitations. It does support
 classpath scanning, as used in Spring and Hibernate, although there seems to be a performance penalty for this. But
 if your application, or it's libraries, also relies on classloader trickery, you might run into some problems. Caveat Emptor.
+
+Looking for something else? One of these might suit: WebStart, Exe4J, jsmooth, izpack.
+
+http://stackoverflow.com/questions/1967549/java-packaging-tools-alternatives-for-jsmooth-launch4j-onejar
 
 Bugs
 ----
