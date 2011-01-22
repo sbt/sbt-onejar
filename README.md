@@ -1,7 +1,7 @@
 onejar-sbt
 ============
 
-* Packages your project using [One-JAR™]("http://one-jar.sourceforge.net")*
+* Packages your project using [One-JAR™](http://one-jar.sourceforge.net)*
 
 onejar-sbt is a [simple-build-tool](http://code.google.com/p/simple-build-tool/)
 plugin for building a single executable JAR containing all your code and dependencies
@@ -38,11 +38,11 @@ How does it compare to XXX?
 ---------------------------
 
 There are other ways to package your application. I based this plugin on Coda Hale's
-[sbt-assembly]("https://github.com/codahale/assembly-sbt") which builds an über-JAR, directly containing
+[sbt-assembly](https://github.com/codahale/assembly-sbt) which builds an über-JAR, directly containing
 all classes and resources merged together. This approach must be used carefully
 when there are resources with the same name across multiple JARs.
 
-Kris Nuttycombe's [sbt-proguard-plugin]("github.com/nuttycom/sbt-proguard-plugin") also creates an über-JAR, with the
+Kris Nuttycombe's [sbt-proguard-plugin](http:github.com/nuttycom/sbt-proguard-plugin) also creates an über-JAR, with the
 possibility to obfuscate and shrink. This is popular for targeting Android. Proguard is a powerful tool, and it
 takes some effort to configure it correctly.
 
@@ -59,7 +59,7 @@ Bugs
 Please report bugs and feature requests to the GitHub issue tracker. Bugs with small sample project will get the most
 attention. Forks and Pull Requests are also welcome.
 
-Problems with One-JAR itself should be reported on it's [Issue Tracker]("http://sourceforge.net/tracker/?group_id=111153")
+Problems with One-JAR itself should be reported on it's [Issue Tracker](http://sourceforge.net/tracker/?group_id=111153)
 
 License
 -------
