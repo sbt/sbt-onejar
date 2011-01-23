@@ -19,8 +19,8 @@ How To Use
 `project/plugins/Plugins.scala`:
 
     class Plugins(info: sbt.ProjectInfo) extends sbt.PluginDefinition(info) {
-      val retronymSnapshotRepo = "retronym's repo" at "http://retronym.github.com/repo/snapshots"
-      val onejarSBT = "com.github.retronym" % "sbt-onejar" % "0.1-SNAPSHOT"
+      val retronymSnapshotRepo = "retronym's repo" at "http://retronym.github.com/repo/releases"
+      val onejarSBT = "com.github.retronym" % "sbt-onejar" % "0.1"
     }
 
 **Second**, add the `OneJarProject` trait to your project:
