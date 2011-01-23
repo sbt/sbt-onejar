@@ -39,7 +39,7 @@ What's in the JAR?
 ------------------
 
 As an example of the structure, here is the contents of `scalaz-example_2.8.1-5.1-SNAPSHOT-onejar.jar`, a package built
-from the Scalaz SBT examples module.
+from the Scalaz examples module.
 
     .
     |-- META-INF
