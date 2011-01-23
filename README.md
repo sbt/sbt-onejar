@@ -7,6 +7,8 @@ onejar-sbt is a [simple-build-tool](http://code.google.com/p/simple-build-tool/)
 plugin for building a single executable JAR containing all your code and dependencies
 as nested JARs.
 
+Currently One-JAR version 0.9.7 is used. This is included with the plugin, and need not be separately downloaded.
+
 Alpha Release
 -------------
 
@@ -20,19 +22,63 @@ How To Use
 
     class Plugins(info: sbt.ProjectInfo) extends sbt.PluginDefinition(info) {
       val retronymSnapshotRepo = "retronym's repo" at "http://retronym.github.com/repo/releases"
-      val onejarSBT = "com.github.retronym" % "sbt-onejar" % "0.1"
+      val onejarSBT = "com.github.retronym" % "sbt-onejar" % "0.2"
     }
 
 **Second**, add the `OneJarProject` trait to your project:
     import com.github.retronym.OneJarProject
 
     class MyProject(info: ProjectInfo) extends DefaultProject(info) with OneJarProject {
-      // etc.
+
+      override def mainClass = Some("acme.FizzleBlaster")
     }
 
-**Third**, run `onejar` task to generate, erm, one JAR. Run it with `java -jar project-name-onejar.jar`.
+**Third**, run `onejar` task to generate, erm, one JAR. Run it with `java -jar <jarname>`.
 
-Currently One-JAR version 0.9.7 is used. This is included with the plugin, and need not be separately downloaded.
+What's in the JAR?
+------------------
+
+As an example of the structure, here is the contents of `scalaz-example_2.8.1-5.1-SNAPSHOT-onejar.jar`, a package built
+from the Scalaz SBT examples module.
+
+    .
+    |-- META-INF
+    |           `-- MANIFEST.MF
+    |-- OneJar.class
+    |-- boot-manifest.mf
+    |-- com
+    |   `-- simontuffs
+    |       `-- onejar
+    |           |-- Boot$1.class
+    |           |-- Boot$2.class
+    |           |-- Boot$3.class
+    |           |-- Boot.class
+    |           |-- Handler$1.class
+    |           |-- Handler.class
+    |           |-- IProperties.class
+    |           |-- JarClassLoader$1.class
+    |           |-- JarClassLoader$2.class
+    |           |-- JarClassLoader$ByteCode.class
+    |           |-- JarClassLoader$FileURLFactory$1.class
+    |           |-- JarClassLoader$FileURLFactory.class
+    |           |-- JarClassLoader$IURLFactory.class
+    |           |-- JarClassLoader$OneJarURLFactory.class
+    |           |-- JarClassLoader.class
+    |           |-- OneJarFile$1.class
+    |           |-- OneJarFile$2.class
+    |           |-- OneJarFile.class
+    |           `-- OneJarURLConnection.class
+    |-- doc
+    |   `-- one-jar-license.txt
+    |-- lib
+    |   |-- scala-library.jar
+    |   |-- scalaz-core_2.8.1-5.1-SNAPSHOT.jar
+    |   |-- scalaz-example_2.8.1-5.1-SNAPSHOT.jar
+    |   |-- scalaz-geo_2.8.1-5.1-SNAPSHOT.jar
+    |   |-- scalaz-http_2.8.1-5.1-SNAPSHOT.jar
+    |   `-- servlet-api-2.5.jar
+    |-- main
+        `-- scalaz-example_2.8.1-5.1-SNAPSHOT.jar
 
 How does it compare to XXX?
 ---------------------------

@@ -8,8 +8,7 @@ trait OneJarProject extends DefaultProject{
 
   override def classpathFilter = super.classpathFilter -- "*-sources.jar" -- "*-javadoc.jar"
 
-  def onejarJarName : String       = name + "-onejar-" + this.version + ".jar"
-  def onejarOutputPath : Path      = outputPath / onejarJarName
+  def onejarOutputPath : Path      = defaultJarPath("-onejar.jar")
   def onejarTemporaryPath : Path   = outputPath / "onejar"
   def onejarClasspath : PathFinder = runClasspath
   def onejarExtraJars : PathFinder = mainDependencies.scalaJars
@@ -41,6 +40,7 @@ trait OneJarProject extends DefaultProject{
     }
     val notManifest: xsbt.NameFilter = -(new xsbt.ExactFilter("META-INF/MANIFEST.MF"))
     unzip(oneJarResourceStream, tempDir.asFile, notManifest)
+    delete(tempDir / "src" asFile)
 
     val tempMainPath = tempDir / "main"
     val tempLibPath = tempDir / "lib"
