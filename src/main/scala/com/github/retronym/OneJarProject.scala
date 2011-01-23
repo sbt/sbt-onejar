@@ -22,7 +22,7 @@ trait OneJarProject extends DefaultProject{
   lazy val onejar = onejarTask(onejarTemporaryPath,
     onejarClasspath,
     onejarExtraJars
-  ) dependsOn (`package`) describedAs ("Builds an optimized, single-file deployable JAR.")
+  ) dependsOn (`package`) describedAs ("Builds a single-file, executable JAR using One-JAR")
 
   def onejarTask(tempDir: Path, classpath: PathFinder, extraJars: PathFinder) =
     packageTask(Path.lazyPathFinder(onejarPaths(tempDir, classpath, extraJars)), onejarOutputPath, onejarPackageOptions)
@@ -42,15 +42,20 @@ trait OneJarProject extends DefaultProject{
     val notManifest: xsbt.NameFilter = -(new xsbt.ExactFilter("META-INF/MANIFEST.MF"))
     unzip(oneJarResourceStream, tempDir.asFile, notManifest)
 
-    // Copy the JAR for this module to "main"
-    FileUtilities.copy(List(jarPath), tempDir / "main", log)
+    val tempMainPath = tempDir / "main"
+    val tempLibPath = tempDir / "lib"
+    Seq(tempLibPath, tempMainPath).foreach(_.asFile.mkdirs)
 
     // Copy all dependencies to "lib"
     val otherProjectJars = topologicalSort.flatMap {
       case x: BasicPackagePaths => List(x.jarPath)
       case _ => Nil
     }
-    FileUtilities.copy(libs ++ extraJars.get ++ otherProjectJars, tempDir / "lib", log)
+    val libPaths: List[Path] = libs ++ extraJars.get ++ otherProjectJars
+
+    // TODO handle errors
+    FileUtilities.copyFlat(List(jarPath), tempMainPath, log)
+    FileUtilities.copyFlat(libPaths, tempLibPath, log)
 
     // Return the paths that will be added to the -onejar.jar
     descendents(tempDir ##, "*").get
