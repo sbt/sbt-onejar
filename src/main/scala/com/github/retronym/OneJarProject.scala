@@ -53,11 +53,16 @@ trait OneJarProject extends DefaultProject{
     }
     val libPaths: List[Path] = libs ++ extraJars.get ++ otherProjectJars
 
-    // TODO handle errors
-    FileUtilities.copyFlat(List(jarPath), tempMainPath, log)
-    FileUtilities.copyFlat(libPaths, tempLibPath, log)
+    getOrThrow(FileUtilities.copyFlat(List(jarPath), tempMainPath, log))
+    getOrThrow(FileUtilities.copyFlat(libPaths, tempLibPath, log))
 
     // Return the paths that will be added to the -onejar.jar
     descendents(tempDir ##, "*").get
   }
+
+  def getOrThrow[X](result: Either[String, X]): X =
+    result match {
+      case Left(s) => error(s)
+      case Right(x) => x
+    }
 }
