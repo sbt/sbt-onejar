@@ -1,7 +1,4 @@
-onejar-sbt
-============
-
-* Packages your project using [One-JAR™](http://one-jar.sourceforge.net)*
+# sbt-onejar Packages your project using [One-JAR™](http://one-jar.sourceforge.net)*
 
 onejar-sbt is a [simple-build-tool](http://code.google.com/p/simple-build-tool/)
 plugin for building a single executable JAR containing all your code and dependencies
@@ -9,34 +6,32 @@ as nested JARs.
 
 Currently One-JAR version 0.9.7 is used. This is included with the plugin, and need not be separately downloaded.
 
-Alpha Release
--------------
+## Requirements
 
-This is the first release of the plugin. Mind the sharp edges, use at your own risk, etc.
+From sbt-onejar 0.3+, SBT 0.10.1+ is required. Users of SBT 0.7.x are directed to the [previous release](https://github.com/retronym/sbt-onejar/tree/0.2).
 
-How To Use
-----------
+## Obtaining
 
-**First**, specify onejar-sbt as a dependency in
-`project/plugins/Plugins.scala`:
+Depend on the plugin by editing
+`project/plugins/plugins.sbt`:
 
-    class Plugins(info: sbt.ProjectInfo) extends sbt.PluginDefinition(info) {
-      val retronymSnapshotRepo = "retronym's repo" at "http://retronym.github.com/repo/releases"
-      val onejarSBT = "com.github.retronym" % "sbt-onejar" % "0.2"
-    }
+```
+resolvers += "retronym-releases" at "http://retronym.github.com/repo/releases"
 
-**Second**, add the `OneJarProject` trait to your project:
-    import com.github.retronym.OneJarProject
+resolvers += "retronym-snapshots" at "http://retronym.github.com/repo/snapshots"
 
-    class MyProject(info: ProjectInfo) extends DefaultProject(info) with OneJarProject {
+libraryDependencies += "com.github.retronym" %% "sbt-onejar" % "0.3-SNAPSHOT"
+```
 
-      override def mainClass = Some("acme.FizzleBlaster")
-    }
+## Introduce Settings
 
-**Third**, run `onejar` task to generate, erm, one JAR. Run it with `java -jar <jarname>`.
+Include the settings from `com.github.retronym.SbtOneJar.sbtOneJarSettings`.
 
-What's in the JAR?
-------------------
+## Usage
+
+run `onejar` task to generate, erm, one JAR. Run it with `java -jar <jarname>`.
+
+## What's in the JAR?
 
 As an example of the structure, here is the contents of `scalaz-example_2.8.1-5.1-SNAPSHOT-onejar.jar`, a package built
 from the Scalaz examples module.
@@ -80,8 +75,7 @@ from the Scalaz examples module.
     |-- main
         `-- scalaz-example_2.8.1-5.1-SNAPSHOT.jar
 
-How does it compare to XXX?
----------------------------
+## How does it compare to XXX?
 
 There are other ways to package your application. I based this plugin on Coda Hale's
 [sbt-assembly](https://github.com/codahale/assembly-sbt) which builds an über-JAR, directly containing
@@ -92,9 +86,6 @@ Kris Nuttycombe's [sbt-proguard-plugin](http:github.com/nuttycom/sbt-proguard-pl
 possibility to obfuscate and shrink. This is popular for targeting Android. Proguard is a powerful tool, and it
 takes some effort to configure it correctly.
 
-SBT itself can create WAR files from WebProjects. With a little work, you could probably get a self-executing WAR file
-using embedded Jetty or Winstone. This would make a good SBT plugin project for someone!
-
 One-JAR employs some classloader magic to sidestep the über-JAR limitations. It does support
 classpath scanning, as used in Spring and Hibernate, although there seems to be a performance penalty for this. But
 if your application, or it's libraries, also relies on classloader trickery, you might run into some problems. Caveat Emptor.
@@ -103,16 +94,14 @@ Looking for something else? One of these might suit: WebStart, Exe4J, jsmooth, i
 
 http://stackoverflow.com/questions/1967549/java-packaging-tools-alternatives-for-jsmooth-launch4j-onejar
 
-Bugs
-----
+## Bugs
 
 Please report bugs and feature requests to the GitHub issue tracker. Bugs with small sample project will get the most
 attention. Forks and Pull Requests are also welcome.
 
 Problems with One-JAR itself should be reported on it's [Issue Tracker](http://sourceforge.net/tracker/?group_id=111153)
 
-License
--------
+## License
 
 Copyright (c) 2011-2011 Jason Zaugg
 
