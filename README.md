@@ -95,7 +95,7 @@ takes some effort to configure it correctly.
 
 One-JAR employs some classloader magic to sidestep the über-JAR limitations. It does support
 classpath scanning, as used in Spring and Hibernate, although there seems to be a performance penalty for this. But
-if your application, or it's libraries, also relies on classloader trickery, you might run into some problems. Caveat Emptor.
+if your application, or its libraries, also relies on classloader trickery, you might run into some problems. Caveat Emptor.
 
 Looking for something else? One of these might suit: WebStart, Exe4J, jsmooth, izpack.
 
