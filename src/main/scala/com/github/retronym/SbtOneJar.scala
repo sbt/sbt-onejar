@@ -9,7 +9,7 @@ import sbt.Package.ManifestAttributes
 // TODO Either fail if exportJars == false, or access the other project artifacts via BuildStructure
 object SbtOneJar extends Plugin {
   val oneJar = TaskKey[File]("one-jar", "Create a single executable JAR using One-JAR™")
-  val oneJarRedist = TaskKey[Set[File]]("one-jar-redist", "The redistributable launcher files")
+  val oneJarRedist = TaskKey[Set[File]]("one-jar-redist", "The redistributable One-JAR™ launcher, unzipped.")
 
   val oneJarSettings: Seq[Project.Setting[_]] = inTask(oneJar)(Seq(
     artifactPath <<= artifactPathSetting(artifact),
