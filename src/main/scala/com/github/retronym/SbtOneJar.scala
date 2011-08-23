@@ -31,7 +31,11 @@ object SbtOneJar extends Plugin {
             oneJarRedist, baseDirectory in oneJarRedist).map {
       (artifact, classpath, oneJarRedist, oneJarRedistBase) =>
         val thisArtifactMapping = (artifact, (file("main") / "main.jar").getPath)
-        val deps: Seq[(File, String)] = Build.data(classpath).map(f => (f, (file("lib") / f.name).getPath))
+        val deps: Seq[(File, String)] = {
+          val allDeps = Build.data(classpath).map(f => (f, (file("lib") / f.name).getPath))
+          allDeps.filterNot(_._1 == artifact)
+        }
+
         val redist = oneJarRedist.toSeq x relativeTo(oneJarRedistBase)
         Seq(thisArtifactMapping) ++ deps ++ redist
     },
