@@ -6,9 +6,7 @@ import java.util.jar.Attributes.Name._
 import sbt.Defaults._
 import sbt.Package.ManifestAttributes
 
-// TODO Exclude sources, boot-manifest.mf when unpacking the redist
 // TODO Either fail if exportJars == false, or access the other project artifacts via BuildStructure
-// TODO Update the documentation
 object SbtOneJar extends Plugin {
   val oneJar = TaskKey[File]("one-jar", "Create a single executable JAR using One-JAR™")
   val oneJarRedist = TaskKey[Set[File]]("one-jar-redist", "The redistributable launcher files")
@@ -23,14 +21,18 @@ object SbtOneJar extends Plugin {
     baseDirectory in oneJarRedist <<= (target)(_ / "one-jar-redist"),
     oneJarRedist <<= (baseDirectory in oneJarRedist).map { (base) =>
       val oneJarResourceName = "one-jar-boot-0.97.jar"
-      val s = this.getClass.getClassLoader.getResourceAsStream(oneJarResourceName)
+      val s = getClass.getClassLoader.getResourceAsStream(oneJarResourceName)
       if (s == null) error("could not load: " + oneJarResourceName)
-      IO.unzipStream(s, base, (_: String) != "META-INF/MANIFEST.MF")
+      def include(path: String) = path match {
+        case "META-INF/MANIFEST.MF" => false
+        case x => !x.startsWith("src/")
+      }
+      IO.unzipStream(s, base, include _)
     },
     mappings in oneJar <<= (packageBin in Compile, dependencyClasspath in Runtime,
             oneJarRedist, baseDirectory in oneJarRedist).map {
       (artifact, classpath, oneJarRedist, oneJarRedistBase) =>
-        val thisArtifactMapping = (artifact, (file("main") / "main.jar").getPath)
+        val thisArtifactMapping = (artifact, (file("main") / artifact.name).getPath)
         val deps: Seq[(File, String)] = {
           val allDeps = Build.data(classpath).map(f => (f, (file("lib") / f.name).getPath))
           allDeps.filterNot(_._1 == artifact)
