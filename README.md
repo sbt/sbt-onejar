@@ -36,7 +36,7 @@ Examples
 
 ## Usage
 
-run `onejar` task to generate, erm, one JAR. Run it with `java -jar <jarname>`.
+run `one-jar` task to generate, erm, one JAR. Run it with `java -jar <jarname>`.
 
 ## What's in the JAR?
 
