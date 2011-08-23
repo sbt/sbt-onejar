@@ -1,6 +1,6 @@
-# sbt-onejar Packages your project using [One-JAR™](http://one-jar.sourceforge.net)*
+# sbt-onejar: Package your project using [One-JAR™](http://one-jar.sourceforge.net)*
 
-onejar-sbt is a [simple-build-tool](http://code.google.com/p/simple-build-tool/)
+sbt-onejar is a [simple-build-tool](http://github.com/harrah/xsbt/wiki)
 plugin for building a single executable JAR containing all your code and dependencies
 as nested JARs.
 
