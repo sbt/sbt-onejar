@@ -1,1 +1,0 @@
-libraryDependencies += "com.github.retronym" %% "sbt-onejar" % "0.3-SNAPSHOT"
