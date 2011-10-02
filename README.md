@@ -29,6 +29,8 @@ addSbtPlugin("com.github.retronym" %% "sbt-onejar" % "0.4")
 
 Include the settings from `com.github.retronym.SbtOneJar.sbtOneJarSettings`.
 
+You can configure `mainClass in oneJar := Some("com.acme.Woozler")`. It defaults to `mainClass in run`.
+
 Examples
 
 * [Light Configuration](https://github.com/retronym/sbt-onejar/blob/master/src/sbt-test/one-jar/basic/build.sbt#L1)

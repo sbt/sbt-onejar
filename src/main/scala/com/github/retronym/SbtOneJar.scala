@@ -15,14 +15,19 @@ object SbtOneJar extends Plugin {
     artifactPath <<= artifactPathSetting(artifact),
     cacheDirectory <<= cacheDirectory / oneJar.key.label
   )) ++ Seq(
-    publishArtifact in oneJar <<= publishMavenStyle.identity,
+    publishArtifact in oneJar <<= publishMavenStyle,
     artifact in oneJar <<= moduleName(Artifact(_, "one-jar")),
     packageOptions in oneJar := Seq(ManifestAttributes((MAIN_CLASS, "com.simontuffs.onejar.Boot"))),
+    mainClass in oneJar <<= (mainClass in run),
+    packageOptions in oneJar <++= (mainClass in oneJar).map {
+      case Some(mainClass) => Seq(ManifestAttributes(("One-Jar-Main-Class", mainClass)))
+      case _ => Seq()
+    },
     baseDirectory in oneJarRedist <<= (target)(_ / "one-jar-redist"),
     oneJarRedist <<= (baseDirectory in oneJarRedist).map { (base) =>
       val oneJarResourceName = "one-jar-boot-0.97.jar"
       val s = getClass.getClassLoader.getResourceAsStream(oneJarResourceName)
-      if (s == null) error("could not load: " + oneJarResourceName)
+      if (s == null) sys.error("could not load: " + oneJarResourceName)
       def include(path: String) = path match {
         case "META-INF/MANIFEST.MF" => false
         case x => !x.startsWith("src/")

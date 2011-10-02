@@ -9,6 +9,7 @@ object build extends Build {
       organization := "com.github.retronym",
       version := "0.5-SNAPSHOT",
       sbtPlugin := true,
+      scalacOptions in Compile ++= Seq("-deprecation"),
       publishTo <<= (version) { (v: String) =>
         val repoSuffix = if (v.contains("-SNAPSHOT")) "snapshots" else "releases"
         val resolver = Resolver.file("gh-pages", new File("/Users/jason/code/retronym.github.com/repo", repoSuffix))

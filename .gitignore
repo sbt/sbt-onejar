@@ -9,3 +9,6 @@ classes
 .idea/ant.xml
 .DS_Store
 *~
+.idea
+.idea_modules
+.lib
