@@ -5,9 +5,9 @@ object build extends Build {
   val sbtXjc = Project(
     id = "sbt-onejar",
     base = file("."),
-    settings = Defaults.defaultSettings ++ ScriptedPlugin.scriptedSettings ++ Seq(
+    settings = Defaults.defaultSettings ++ ScriptedPlugin.scriptedSettings ++ Seq[Project.Setting[_]](
       organization := "com.github.retronym",
-      version := "0.5",
+      version := "0.6-SNAPSHOT",
       sbtPlugin := true,
       scalacOptions in Compile ++= Seq("-deprecation"),
       publishTo <<= (version) { (v: String) =>
