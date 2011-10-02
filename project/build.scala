@@ -7,7 +7,7 @@ object build extends Build {
     base = file("."),
     settings = Defaults.defaultSettings ++ ScriptedPlugin.scriptedSettings ++ Seq(
       organization := "com.github.retronym",
-      version := "0.5-SNAPSHOT",
+      version := "0.5",
       sbtPlugin := true,
       scalacOptions in Compile ++= Seq("-deprecation"),
       publishTo <<= (version) { (v: String) =>

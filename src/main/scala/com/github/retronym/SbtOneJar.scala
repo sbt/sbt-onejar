@@ -18,7 +18,7 @@ object SbtOneJar extends Plugin {
     publishArtifact in oneJar <<= publishMavenStyle,
     artifact in oneJar <<= moduleName(Artifact(_, "one-jar")),
     packageOptions in oneJar := Seq(ManifestAttributes((MAIN_CLASS, "com.simontuffs.onejar.Boot"))),
-    mainClass in oneJar <<= (mainClass in run),
+    mainClass in oneJar <<= mainClass in run in Compile,
     packageOptions in oneJar <++= (mainClass in oneJar).map {
       case Some(mainClass) => Seq(ManifestAttributes(("One-Jar-Main-Class", mainClass)))
       case _ => Seq()

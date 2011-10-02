@@ -22,14 +22,14 @@ resolvers += "retronym-releases" at "http://retronym.github.com/repo/releases"
 
 resolvers += "retronym-snapshots" at "http://retronym.github.com/repo/snapshots"
 
-addSbtPlugin("com.github.retronym" %% "sbt-onejar" % "0.4")
+addSbtPlugin("com.github.retronym" %% "sbt-onejar" % "0.5")
 ```
 
 ## Introduce Settings
 
 Include the settings from `com.github.retronym.SbtOneJar.sbtOneJarSettings`.
 
-You can configure `mainClass in oneJar := Some("com.acme.Woozler")`. It defaults to `mainClass in run`.
+You can configure `mainClass in oneJar := Some("com.acme.Woozler")`. It defaults to `mainClass in run in Compile`.
 
 Examples
 
