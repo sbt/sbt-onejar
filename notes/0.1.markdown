@@ -1,0 +1,1 @@
+* First release of sbt-onejar, for SBT 0.7.7
