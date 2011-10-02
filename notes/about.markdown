@@ -7,7 +7,7 @@ Alternatives ways to package your application:
 
 * As an &uuml;ber-JAR with [sbt-assembly][2]
 * Obfuscated and trimmed of fat with [xsbt-proguard-plugin][3]
-* With a grahical installer via [sbt-izpack][4]
+* With a graphical installer via [sbt-izpack][4]
 
 [1]: https://github.com/retronym/sbt-onejar
 [2]: https://github.com/eed3si9n/sbt-assembly
