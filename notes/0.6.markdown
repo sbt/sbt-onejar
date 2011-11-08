@@ -1,0 +1,1 @@
+* Cross build against SBT 0.11.0 and SBT 0.11.1
