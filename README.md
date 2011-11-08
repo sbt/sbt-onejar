@@ -8,7 +8,9 @@ Currently One-JAR version 0.9.7 is used. This is included with the plugin, and n
 
 ## Requirements
 
-From sbt-onejar 0.4+, SBT 0.11.0 or greater is required. Users of SBT 0.7.x are directed to the [previous release](https://github.com/retronym/sbt-onejar/tree/0.2).
+Requires SBT 0.11.0 or higher.
+
+Users of SBT 0.7.x are directed to the [v0.2](https://github.com/retronym/sbt-onejar/tree/0.2).
 
 Currently, you need to include the setting `exportJars := true` if you have a multi-project build. ([Example](https://github.com/retronym/sbt-onejar/blob/master/src/sbt-test/one-jar/multi/project/build.scala#L7))
 
@@ -22,7 +24,7 @@ resolvers += "retronym-releases" at "http://retronym.github.com/repo/releases"
 
 resolvers += "retronym-snapshots" at "http://retronym.github.com/repo/snapshots"
 
-addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.5")
+addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.6")
 ```
 
 ## Introduce Settings
