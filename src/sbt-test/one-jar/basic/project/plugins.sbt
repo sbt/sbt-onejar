@@ -1,1 +1,1 @@
-addSbtPlugin("com.github.retronym" %% "sbt-onejar" % "0.6-SNAPSHOT")
+addSbtPlugin("com.github.retronym" %% "sbt-onejar" % "0.7")
