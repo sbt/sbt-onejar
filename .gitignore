@@ -12,3 +12,6 @@ classes
 .idea
 .idea_modules
 .lib
+.ivy
+.boot
+
