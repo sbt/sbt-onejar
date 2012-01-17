@@ -8,7 +8,7 @@ Currently One-JAR version 0.9.7 is used. This is included with the plugin, and n
 
 ## Requirements
 
-Requires SBT 0.11.0 or higher.
+Requires SBT 0.11.2.
 
 Users of SBT 0.7.x are directed to the [v0.2](https://github.com/retronym/sbt-onejar/tree/0.2).
 
@@ -24,12 +24,12 @@ resolvers += "retronym-releases" at "http://retronym.github.com/repo/releases"
 
 resolvers += "retronym-snapshots" at "http://retronym.github.com/repo/snapshots"
 
-addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.6")
+addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.7")
 ```
 
 ## Introduce Settings
 
-Include the settings from `com.github.retronym.SbtOneJar.sbtOneJarSettings`.
+Include the settings from `com.github.retronym.SbtOneJar.oneJarSettings`.
 
 You can configure `mainClass in oneJar := Some("com.acme.Woozler")`. It defaults to `mainClass in run in Compile`.
 
