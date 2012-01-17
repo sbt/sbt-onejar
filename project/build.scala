@@ -10,11 +10,8 @@ object build extends Build {
       version := "0.8-SNAPSHOT",
       sbtPlugin := true,
       scalacOptions in Compile ++= Seq("-deprecation"),
-      publishTo <<= (version) { (v: String) =>
-        val repoSuffix = if (v.contains("-SNAPSHOT")) "snapshots" else "releases"
-        val resolver = Resolver.file("gh-pages", new File("/Users/jason/code/retronym.github.com/repo", repoSuffix))
-        Some(resolver)
-      }
+      publishTo := Some(Resolver.url("sbt-plugin-releases", new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)),
+      publishMavenStyle := false
     )
   )
 }
