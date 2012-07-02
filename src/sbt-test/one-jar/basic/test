@@ -1,3 +1,3 @@
-> show main-class(for one-jar)
+> show one-jar::main-class
 > show one-jar
 > show one-jar-redist

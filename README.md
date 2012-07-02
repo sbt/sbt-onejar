@@ -8,7 +8,7 @@ Currently One-JAR version 0.9.7 is used. This is included with the plugin, and n
 
 ## Requirements
 
-Requires SBT 0.11.2.
+Requires SBT 0.11.2, 0.11.3, or 0.12.x
 
 Users of SBT 0.7.x are directed to the [v0.2](https://github.com/retronym/sbt-onejar/tree/0.2).
 
@@ -20,12 +20,13 @@ Depend on the plugin by editing
 `project/plugins/plugins.sbt`:
 
 ```
+// This resolver declaration is added by default SBT 0.12.x
 resolvers += Resolver.url(
   "sbt-plugin-releases", 
   new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/")
 )(Resolver.ivyStylePatterns)
 
-addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.7")
+addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.8")
 ```
 
 ## Introduce Settings
