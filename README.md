@@ -17,7 +17,7 @@ Currently, you need to include the setting `exportJars := true` if you have a mu
 ## Obtaining
 
 Depend on the plugin by editing
-`project/plugins/plugins.sbt`:
+`project/plugins.sbt`:
 
 ```
 // This resolver declaration is added by default SBT 0.12.x
