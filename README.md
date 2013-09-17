@@ -20,7 +20,7 @@ Depend on the plugin by editing
 `project/plugins.sbt`:
 
 ```
-addSbtPlugin("com.github.retronym" % "sbt-onejar" % "0.8")
+addSbtPlugin("org.scala-sbt.plugins" % "sbt-onejar" % "0.8")
 ```
 
 ## Introduce Settings
