@@ -6,11 +6,11 @@ object build extends Build {
     id = "sbt-onejar",
     base = file("."),
     settings = Defaults.defaultSettings ++ ScriptedPlugin.scriptedSettings ++ Seq[Project.Setting[_]](
-      organization := "com.github.retronym",
-      version := "0.8-SNAPSHOT",
+      organization := "org.scala-sbt.plugins",
+      version := "0.8",
       sbtPlugin := true,
       scalacOptions in Compile ++= Seq("-deprecation"),
-      publishTo := Some(Resolver.url("sbt-plugin-releases", new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)),
+      publishTo := Some(Resolver.url("sbt-plugin-releases-publish", new URL("http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)),
       publishMavenStyle := false
     )
   )
