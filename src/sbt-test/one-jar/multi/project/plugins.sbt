@@ -1,1 +1,1 @@
-addSbtPlugin("com.github.retronym" %% "sbt-onejar" % "0.8-SNAPSHOT")
+addSbtPlugin("org.scala-sbt.plugins" %% "sbt-onejar" % System.getProperty("plugin.version"))
