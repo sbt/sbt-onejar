@@ -1,6 +1,6 @@
 name := "sbt-onejar"
 
-crossSbtVersions := Seq("0.13.16", "1.0.0")
+crossSbtVersions := Seq("0.13.17", "1.1.1")
 
 ScriptedPlugin.scriptedSettings
 
